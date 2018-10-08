@@ -30,7 +30,7 @@ define(function() {
 
     },
     isUSD : function(str) {
-        return /^\$(?:\d+|\d{1,3}(?:,\d{3})+)(?:(\.|,)\d+)?$/.test(str);
+        return /^\$(?:\d+|\d{1,3}(?:,\d{3})+)(?:(\.|,)\d{2})?$/.test(str);
 
     }
   };
