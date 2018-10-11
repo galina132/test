@@ -18,11 +18,22 @@ define(function() {
     },
 
     makeClosures : function(arr, fn) {
-        return arr.map(function(item) {
-            return function() {
-                fn(item);
-            };
-        });
+        var funcs = [];
+        var array = arr;
+        var i = 0;
+        var l = array.length;
+
+        (function(i, array) {
+
+            for (; i < l; i++) {
+                funcs[i] = function(i, array) {
+                    return fn(array[i]);
+                }.bind(this,i,array);
+            }
+
+        }(i, array));
+
+        return funcs;
     },
 
     partial : function(fn, str1, str2) {
